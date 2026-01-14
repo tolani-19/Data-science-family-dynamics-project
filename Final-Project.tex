@@ -1,0 +1,439 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={STAT1500 - Final Project},
+  pdfauthor={Name: Motolani Karima Kay-salami and Chidera Anyanwu Sophia(Student ID: 202165668 Student ID: 20223671 )},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{\textbf{STAT1500 - Final Project}}
+\author{\textbf{Name: Motolani Karima Kay-salami and Chidera Anyanwu
+Sophia}(\textbf{Student ID:} \emph{202165668} \textbf{Student ID:}
+\emph{20223671} )}
+\date{`}
+
+\begin{document}
+\maketitle
+
+\hypertarget{family-income-vs-gradesg3}{%
+\section{1. Family Income vs
+Grades(G3)}\label{family-income-vs-gradesg3}}
+
+We are going to analyze the relationship between Family income and
+grades
+
+From the dataset, there was no direct family income. however, some
+factors contribute to the family income. • Family size: Larger family
+size, lower income due to financial demands • Medu and Fedu: The
+education of both parents is linked to higher-paying jobs • Mjob and
+Fjob: The job of both parents determines how high or lower the family
+income will be We also create a family\_income\_score column, to
+determine an approximate score a family income will be based on the
+variables above
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the datasets}
+\NormalTok{d1 }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"/Users/motolanikay{-}salami/Downloads/student+performance/student/student{-}mat.csv"}\NormalTok{, }
+                 \AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{d2 }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"/Users/motolanikay{-}salami/Downloads/student+performance (1)/student/student{-}por.csv"}\NormalTok{, }
+                 \AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Merge the two datasets on common columns}
+\NormalTok{d3 }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(d1, d2, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"school"}\NormalTok{, }\StringTok{"sex"}\NormalTok{, }\StringTok{"age"}\NormalTok{, }\StringTok{"address"}\NormalTok{, }\StringTok{"famsize"}\NormalTok{, }\StringTok{"Pstatus"}\NormalTok{, }
+                           \StringTok{"Medu"}\NormalTok{, }\StringTok{"Fedu"}\NormalTok{, }\StringTok{"Mjob"}\NormalTok{, }\StringTok{"Fjob"}\NormalTok{, }\StringTok{"reason"}\NormalTok{, }\StringTok{"nursery"}\NormalTok{, }\StringTok{"internet"}\NormalTok{))}
+
+\CommentTok{\# Combine G1, G2, and G3 from both datasets into one column for each course, to get total scores}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{G1\_total }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G1.x }\SpecialCharTok{+}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G1.y}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{G2\_total }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G2.x }\SpecialCharTok{+}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G2.y}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{G3\_total }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G3.x }\SpecialCharTok{+}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{G3.y}
+
+
+\CommentTok{\# Initialize a new column for family income score}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}} \DecValTok{0}
+
+\CommentTok{\# Add points based on family size (famsize)}
+\CommentTok{\# If family size is greater than 3, add 1 point}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{famsize }\SpecialCharTok{==} \StringTok{"GT3"}\NormalTok{, d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\SpecialCharTok{+} \DecValTok{1}\NormalTok{, d3}\SpecialCharTok{$}\NormalTok{family\_income\_score)}
+
+\CommentTok{\# Add points for mother\textquotesingle{}s education (Medu)}
+\CommentTok{\# Higher education adds more points}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\SpecialCharTok{+}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{Medu}
+
+\CommentTok{\# Add points for father\textquotesingle{}s education (Fedu)}
+\CommentTok{\# Higher education adds more points}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\SpecialCharTok{+}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{Fedu}
+
+\CommentTok{\# Add points for mother\textquotesingle{}s job (Mjob)}
+\CommentTok{\# Certain jobs give higher points (e.g., teacher, health worker)}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\SpecialCharTok{+} \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Mjob }\SpecialCharTok{==} \StringTok{"teacher"}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+                                                          \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Mjob }\SpecialCharTok{==} \StringTok{"health"}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+                                                                 \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Mjob }\SpecialCharTok{==} \StringTok{"services"}\NormalTok{, }\DecValTok{2}\NormalTok{, }
+                                                                        \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Mjob }\SpecialCharTok{==} \StringTok{"at\_home"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))))}
+
+\CommentTok{\# Add points for father\textquotesingle{}s job (Fjob)}
+\CommentTok{\# Similarly, certain jobs give higher points (e.g., teacher, health worker)}
+\NormalTok{d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\OtherTok{\textless{}{-}}\NormalTok{ d3}\SpecialCharTok{$}\NormalTok{family\_income\_score }\SpecialCharTok{+} \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Fjob }\SpecialCharTok{==} \StringTok{"teacher"}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+                                                          \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Fjob }\SpecialCharTok{==} \StringTok{"health"}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+                                                                 \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Fjob }\SpecialCharTok{==} \StringTok{"services"}\NormalTok{, }\DecValTok{2}\NormalTok{, }
+                                                                        \FunctionTok{ifelse}\NormalTok{(d3}\SpecialCharTok{$}\NormalTok{Fjob }\SpecialCharTok{==} \StringTok{"at\_home"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))))}
+
+\CommentTok{\# Print the first few rows to see the results}
+\FunctionTok{head}\NormalTok{(d3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   school sex age address famsize Pstatus Medu Fedu     Mjob     Fjob     reason
+## 1     GP   F  15       R     GT3       T    1    1  at_home    other       home
+## 2     GP   F  15       R     GT3       T    1    1    other    other reputation
+## 3     GP   F  15       R     GT3       T    2    2  at_home    other reputation
+## 4     GP   F  15       R     GT3       T    2    4 services   health     course
+## 5     GP   F  15       R     GT3       T    3    3 services services reputation
+## 6     GP   F  15       R     GT3       T    3    4 services   health     course
+##   nursery internet guardian.x traveltime.x studytime.x failures.x schoolsup.x
+## 1     yes      yes     mother            2           4          1         yes
+## 2      no      yes     mother            1           2          2         yes
+## 3     yes       no     mother            1           1          0         yes
+## 4     yes      yes     mother            1           3          0         yes
+## 5     yes      yes      other            2           3          2          no
+## 6     yes      yes     mother            1           3          0         yes
+##   famsup.x paid.x activities.x higher.x romantic.x famrel.x freetime.x goout.x
+## 1      yes    yes          yes      yes         no        3          1       2
+## 2      yes     no           no      yes        yes        3          3       4
+## 3      yes    yes          yes      yes         no        4          3       1
+## 4      yes    yes          yes      yes         no        4          3       2
+## 5      yes    yes          yes      yes        yes        4          2       1
+## 6      yes    yes          yes      yes         no        4          3       2
+##   Dalc.x Walc.x health.x absences.x G1.x G2.x G3.x guardian.y traveltime.y
+## 1      1      1        1          2    7   10   10     mother            2
+## 2      2      4        5          2    8    6    5     mother            1
+## 3      1      1        2          8   14   13   13     mother            1
+## 4      1      1        5          2   10    9    8     mother            1
+## 5      2      3        3          8   10   10   10      other            2
+## 6      1      1        5          2   12   12   11     mother            1
+##   studytime.y failures.y schoolsup.y famsup.y paid.y activities.y higher.y
+## 1           4          0         yes      yes    yes          yes      yes
+## 2           2          0         yes      yes     no           no      yes
+## 3           1          0         yes      yes     no          yes      yes
+## 4           3          0         yes      yes     no          yes      yes
+## 5           3          0          no      yes    yes          yes      yes
+## 6           3          0         yes      yes     no          yes      yes
+##   romantic.y famrel.y freetime.y goout.y Dalc.y Walc.y health.y absences.y G1.y
+## 1         no        3          1       2      1      1        1          4   13
+## 2        yes        3          3       4      2      4        5          2   13
+## 3         no        4          3       1      1      1        2          8   14
+## 4         no        4          3       2      1      1        5          2   10
+## 5        yes        4          2       1      2      3        3          2   13
+## 6         no        4          3       2      1      1        5          2   11
+##   G2.y G3.y G1_total G2_total G3_total family_income_score
+## 1   13   13       20       23       23                   6
+## 2   11   11       21       17       16                   7
+## 3   13   12       28       26       25                   8
+## 4   11   10       20       20       18                  13
+## 5   13   13       23       23       23                  11
+## 6   12   12       23       24       23                  14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram for Family Income Score}
+\FunctionTok{ggplot}\NormalTok{(d3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ family\_income\_score)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{15}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Family Income Score"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Family Income Score"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Project_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\textbf{Observation:} The majority of family income scores are
+concentrated within the range of 8 to 12, indicating that most families
+in this dataset have a moderate to average income level. Few families
+fall into either the very low or very high-income categories, which
+suggests a central concentration of income scores. In summary, the
+family income distribution reflects a population where most families
+earn incomes in the middle range, with only a small number experiencing
+very low or very high incomes. This pattern may indicate a relatively
+stable economic environment for the majority of families, with less
+financial polarization
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram for G3(Final Grade)}
+\FunctionTok{ggplot}\NormalTok{(d3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ G3\_total)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{15}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Final Grade (G3)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Final Grade (G3)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Project_files/figure-latex/unnamed-chunk-4-1.pdf}
+\textbf{Observation:} The histogram of student grades shows that most
+students performed well, with grades concentrated between 20 and 30,
+particularly in the 20--25 range. Failing grades (below 10) are rare,
+and the distribution has a slight right skew, indicating that while many
+students scored well, exceptionally high grades (35--40) are less
+common. Grades range from 0 to 40, with the majority in the mid-to-high
+range. A small number of students scored below 15 and may need
+additional support. Meanwhile, those scoring 30 and above represent a
+smaller group of high achievers. Overall, the class performed well, but
+there are opportunities for improvement among both lower and
+higher-performing students.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a scatter plot to visualize the relationship between Family Income Score and G3}
+\FunctionTok{ggplot}\NormalTok{(d3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ family\_income\_score, }\AttributeTok{y =}\NormalTok{ G3\_total)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Family Income vs G3 with Fitted Regression Line"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Family\_Income\_Score"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"G3"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Final-Project_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(family\_income\_score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ G3\_total, }\AttributeTok{data =}\NormalTok{ d3)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = family_income_score ~ G3_total, data = d3)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -7.363 -2.187 -0.324  2.185  7.792 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  8.42410    0.54434   15.48  < 2e-16 ***
+## G3_total     0.09795    0.02283    4.29 2.27e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.953 on 380 degrees of freedom
+## Multiple R-squared:  0.04619,    Adjusted R-squared:  0.04368 
+## F-statistic:  18.4 on 1 and 380 DF,  p-value: 2.269e-05
+\end{verbatim}
+
+\emph{Observation}
+
+There is a positive correlation, suggesting that individuals with higher
+family income scores tend to achieve higher G3 scores.''
+
+\emph{Interpretation of the estimated slope of the model.}
+
+The estimated slope for the G3 total score is 0.09795. This slope
+indicates the expected change in the dependent variable (family income
+score) for each one-unit increase in the independent variable (G3 total
+score). Specifically, for every additional point in the G3 total score,
+the family income score is expected to increase by approximately 0.098,
+assuming all other factors remain constant. Additionally, the p-value
+for this coefficient is very small (2.27e-05), allowing us to conclude
+that this relationship is statistically significant. This suggests that
+the G3 total score will likely impact the family income score.
+
+\emph{Report on the R-squared value for the regression model. The
+implication of the value about the relationship between
+\texttt{family\_income\_score} and \texttt{G3\_total}}
+
+In this regression analysis, we examined the relationship between family
+income score (the independent variable) and G3 total (the dependent
+variable, representing the students' final grades). The R-squared value
+for this model is 0.04619, indicating that the family income score
+accounts for only 4.6\% of the variation in the G3 total. This suggests
+that while there is a statistically significant relationship between the
+two variables, the strength of that relationship is relatively weak. The
+remaining 95.4\% of the variation in G3 total is influenced by other
+factors that are not included in our model.
+
+\emph{Investigate the constant variability of residuals with a relevant
+plot.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit the linear model}
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(G3\_total }\SpecialCharTok{\textasciitilde{}}\NormalTok{ family\_income\_score, }\AttributeTok{data =}\NormalTok{ d3)}
+
+\CommentTok{\# Add Residuals vs Fitted Values plot}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Fitted =} \FunctionTok{fitted}\NormalTok{(model), }\AttributeTok{Residuals =} \FunctionTok{resid}\NormalTok{(model)), }
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Fitted, }\AttributeTok{y =}\NormalTok{ Residuals)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals vs Fitted Values"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Fitted Values"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Residuals"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Project_files/figure-latex/unnamed-chunk-7-1.pdf}
+The residuals do not show a clear pattern against the fitted values,
+suggesting a linear relationship between family income scores and
+grades. This indicates that the model effectively captures their
+association.Although the variability of the residuals is relatively
+consistent, some clustering occurs around fitted values of 23--24. This
+may imply that the relationship between income scores and grades varies
+slightly at different grade levels, with students in certain ranges
+exhibiting more performance variability regardless of income.Since no
+significant heteroscedasticity is observed, family income likely impacts
+grades consistently across the dataset. However, variations in residuals
+may suggest the influence of other factors, such as individual
+motivation or school resources.
+
+\emph{Investigate the normality of residuals with a relevant plot.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{resid}\NormalTok{(model))}
+\FunctionTok{qqline}\NormalTok{(}\FunctionTok{resid}\NormalTok{(model), }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Project_files/figure-latex/unnamed-chunk-8-1.pdf}
+The plot indicates that the residuals are approximately normally
+distributed, with most points closely aligning with the red reference
+line. This suggests that the normality assumption is largely satisfied.
+However, there are minor deviations at the tails, which may indicate
+slight departures from normality. These deviations could be attributed
+to outliers or unmodeled variability at extreme values of grades (G3
+total) or family income scores. Additionally, the low R-squared value of
+4.62\% shows that grades alone explain only a small portion of the
+variability in family income scores. While the model is statistically
+significant, its predictive power is limited. Incorporating more
+predictors could potentially improve the model's fit.
+
+\emph{Conclusion} Based on the regression analysis, a positive
+correlation between family income scores and G3 total scores is
+observed, suggesting that students with higher family income tend to
+achieve higher grades. The estimated slope of 0.09795 indicates that for
+each additional point in the G3 total score, the family income score
+increases by approximately 0.098, with a statistically significant
+p-value (2.27e-05). However, the model's R-squared value of 0.04619
+reveals that family income scores account for only 4.6\% of the
+variation in G3 total scores, implying a weak relationship. Despite the
+statistical significance, the low R-squared value suggests that other
+factors, not included in the model, have a stronger influence on the
+variation in students' grades. The residual analysis indicates that the
+model appropriately captures the relationship between the two variables,
+though slight clustering of residuals around certain G3 values may
+suggest some variability in the impact of family income at different
+grade levels. While the normality assumption of residuals is largely
+satisfied, minor deviations at the extremes point to potential outliers
+or unmodeled factors. In summary, although family income is
+statistically linked to grades, the relationship is weak and other
+contributing factors likely play a more significant role in determining
+student performance. Expanding the model to include additional
+predictors could improve its explanatory power and predictive accuracy.
+
+\end{document}

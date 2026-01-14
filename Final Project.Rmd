@@ -1,0 +1,266 @@
+---
+title: "**STAT1500 - Final Project**"
+author: "**Name: Motolani Karima Kay-salami and Chidera Anyanwu Sophia**(**Student ID:** *202165668*  **Student ID:** *20223671*  ) "
+date: 
+output:
+  word_document: default
+  pdf_document:
+fontsize: 12pt
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(mosaic)
+library(caret)
+library(ggplot2)
+
+```
+
+**1. Family Income vs Grades(G3) **
+
+We are going to analyze the relationship between Family income and grades
+
+From the dataset, there was no direct family income. however, some factors contribute to the family income. 
+•	Family size: Larger family size, lower income due to financial demands
+•	Medu and Fedu: The education of both parents is linked to higher-paying jobs
+•	Mjob and Fjob:  The job of both parents determines how high or lower the family income will be 
+We also create a family_income_score column, to determine an approximate score a family income will be based on the variables above
+
+```{r}
+# Load the datasets
+d1 <- read.table("/Users/motolanikay-salami/Downloads/student+performance/student/student-mat.csv", sep = ";", header = TRUE)
+
+d2 <- read.table("/Users/motolanikay-salami/Downloads/student+performance (1)/student/student-por.csv",  sep = ";", header = TRUE)
+
+# Merge the two datasets on common columns
+d3 <- merge(d1, d2, by = c("school", "sex", "age", "address", "famsize", "Pstatus", 
+                           "Medu", "Fedu", "Mjob", "Fjob", "reason", "nursery", "internet"))
+
+# Combine G1, G2, and G3 from both datasets into one column for each course, to get total scores
+d3$G1_total <- d3$G1.x + d3$G1.y
+d3$G2_total <- d3$G2.x + d3$G2.y
+d3$G3_total <- d3$G3.x + d3$G3.y
+
+
+# Initialize a new column for family income score
+d3$family_income_score <- 0
+
+# Add points based on family size (famsize)
+# If family size is greater than 3, add 1 point
+d3$family_income_score <- ifelse(d3$famsize == "GT3", d3$family_income_score +1, d3$ family_income_score)
+
+# Add points for mother's education (Medu)
+d3$family_income_score <- d3$family_income_score + d3$Medu
+
+# Add points for father's education (Fedu)
+
+d3$family_income_score <- d3$family_income_score + d3$Fedu
+
+# Add points for mother's job (Mjob)
+# Certain jobs give higher points (e.g., teacher, health worker)
+d3$family_income_score <- d3$family_income_score + ifelse(d3$Mjob == "teacher", 4,ifelse(d3$Mjob == "health", 4, ifelse(d3$Mjob == "services", 2,  ifelse(d3$Mjob =="at_home", 1, 2))))
+
+# Add points for father's job (Fjob)
+# Similarly, certain jobs give higher points (e.g., teacher, health worker)
+d3$family_income_score <- d3$family_income_score + ifelse(d3$Fjob == "teacher", 4,ifelse(d3$Fjob == "health", 4,ifelse(d3$Fjob == "services", 2, ifelse(d3$Fjob == "at_home", 1, 2))))
+
+```
+
+
+```{r}
+# Histogram for Family Income Score
+ggplot(d3, aes(x = family_income_score)) +
+  geom_histogram(bins = 15, fill = "lightblue", color = "black") +
+  theme_minimal() +
+  labs(title = "Distribution of Family Income Score", x = "Family Income Score", y = "Count")
+
+```
+
+**Observation:** 
+The majority of family income scores are concentrated within the range of 8 to 12, indicating that most families in this dataset have a moderate to average income level. Few families fall into either the very low or very high-income categories, which suggests a central concentration of income scores. In summary, the family income distribution reflects a population where most families earn incomes in the middle range, with only a small number experiencing very low or very high incomes. This pattern may indicate a relatively stable economic environment for the majority of families, with less financial polarization
+
+
+
+```{r}
+# Histogram for G3(Final Grade)
+ggplot(d3, aes(x = G3_total)) +
+  geom_histogram(bins = 15, fill = "lightgreen", color = "black") +
+  theme_minimal() +
+  labs(title = "Distribution of Final Grade (G3)", x = "Final Grade (G3)", y = "Count")
+```
+**Observation:**
+The histogram of student grades shows that most students performed well, with grades concentrated between 20 and 30, particularly in the 20–25 range. Failing grades (below 10) are rare, and the distribution has a slight right skew, indicating that while many students scored well, exceptionally high grades (35–40) are less common.
+Grades range from 0 to 40, with the majority in the mid-to-high range. A small number of students scored below 15 and may need additional support. Meanwhile, those scoring 30 and above represent a smaller group of high achievers. Overall, the class performed well, but there are opportunities for improvement among both lower and higher-performing students.
+
+
+```{r}
+# Create a scatter plot to visualize the relationship between Family Income Score and G3
+ggplot(d3, aes(x = family_income_score, y = G3_total)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Family Income vs G3 with Fitted Regression Line",
+       x = "Family_Income_Score",
+       y = "G3")
+```
+
+
+```{r}
+model <- lm(family_income_score ~ G3_total, data = d3)
+print(summary(model))
+```
+ *Observation*
+ 
+There is a positive correlation, suggesting that individuals with higher family income scores tend to achieve higher G3 scores."
+
+ *Interpretation of the estimated slope of the model.*
+ 
+The estimated slope for the G3 total score is 0.09795. This slope indicates the expected change in the dependent variable (family income score) for each one-unit increase in the independent variable (G3 total score). Specifically, for every additional point in the G3 total score, the family income score is expected to increase by approximately 0.098, assuming all other factors remain constant. Additionally, the p-value for this coefficient is very small (2.27e-05), allowing us to conclude that this relationship is statistically significant. This suggests that the G3 total score will likely impact the family income score.
+
+
+*Report on the R-squared value for the regression model. The implication of the value about the relationship between `family_income_score` and `G3_total`*
+
+ In this regression analysis, we examined the relationship between family income score (the independent variable) and G3 total (the dependent variable, representing the students' final grades). The R-squared value for this model is 0.04619, indicating that the family income score accounts for only 4.6% of the variation in the G3 total. This suggests that while there is a statistically significant relationship between the two variables, the strength of that relationship is relatively weak. The remaining 95.4% of the variation in G3 total is influenced by other factors that are not included in our model.
+ 
+
+
+*Investigate the constant variability of residuals with a relevant plot.*
+
+```{r}
+# Fit the linear model
+model <- lm(G3_total ~ family_income_score, data = d3)
+
+# Add Residuals vs Fitted Values plot
+ggplot(data = data.frame(Fitted = fitted(model), Residuals = resid(model)), 
+       aes(x = Fitted, y = Residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Residuals vs Fitted Values",
+       x = "Fitted Values",
+       y = "Residuals") +
+  theme_minimal()
+
+```
+The residuals do not show a clear pattern against the fitted values, suggesting a linear relationship between family income scores and grades. This indicates that the model effectively captures their association.Although the variability of the residuals is relatively consistent, some clustering occurs around fitted values of 23–24. This may imply that the relationship between income scores and grades varies slightly at different grade levels, with students in certain ranges exhibiting more performance variability regardless of income.Since no significant heteroscedasticity is observed, family income likely impacts grades consistently across the dataset. However, variations in residuals may suggest the influence of other factors, such as individual motivation or school resources.
+
+*Investigate the normality of residuals with a relevant plot.*
+```{r}
+qqnorm(resid(model))
+qqline(resid(model), col = "red")
+
+```
+The plot indicates that the residuals are approximately normally distributed, with most points closely aligning with the red reference line. This suggests that the normality assumption is largely satisfied. However, there are minor deviations at the tails, which may indicate slight departures from normality. These deviations could be attributed to outliers or unmodeled variability at extreme values of grades (G3 total) or family income scores. Additionally, the low R-squared value of 4.62% shows that grades alone explain only a small portion of the variability in family income scores. While the model is statistically significant, its predictive power is limited. Incorporating more predictors could potentially improve the model's fit.
+
+
+
+*Conclusion*
+Based on the regression analysis, a positive correlation between family income scores and G3 total scores is observed, suggesting that students with higher family income tend to achieve higher grades. The estimated slope of 0.09795 indicates that for each additional point in the G3 total score, the family income score increases by approximately 0.098, with a statistically significant p-value (2.27e-05). However, the model's R-squared value of 0.04619 reveals that family income scores account for only 4.6% of the variation in G3 total scores, implying a weak relationship.
+Despite the statistical significance, the low R-squared value suggests that other factors, not included in the model, have a stronger influence on the variation in students' grades. The residual analysis indicates that the model appropriately captures the relationship between the two variables, though slight clustering of residuals around certain G3 values may suggest some variability in the impact of family income at different grade levels. While the normality assumption of residuals is largely satisfied, minor deviations at the extremes point to potential outliers or unmodeled factors.
+In summary, although family income is statistically linked to grades, the relationship is weak and other contributing factors likely play a more significant role in determining student performance. Expanding the model to include additional predictors could improve its explanatory power and predictive accuracy.
+
+
+**2. Family Support Vs Grades**
+
+```{r}
+# Load required libraries
+library(dplyr)
+library(ggplot2)
+
+# Load the datasets
+d1 <- read.table("/Users/motolanikay-salami/Downloads/student+performance/student/student-mat.csv",  sep = ";", header = TRUE)
+
+d2 <- read.table("/Users/motolanikay-salami/Downloads/student+performance (1)/student/student-por.csv",  sep = ";", header = TRUE)
+
+# Merge the two datasets on common columns
+d3 <- merge(d1, d2, by = c("school", "sex", "age", "address", "famsize", "Pstatus", 
+                           "Medu", "Fedu", "Mjob", "Fjob", "reason", "nursery", "internet"))
+
+# Combine G1, G2, and G3 from both datasets into one column for each course, to get total scores
+d3$G1_total <- d3$G1.x + d3$G1.y
+d3$G2_total <- d3$G2.x + d3$G2.y
+d3$G3_total <- d3$G3.x + d3$G3.y
+
+
+# Merge the 'famsup.x' and 'famsup.y' columns into a new column 'famsup_combined'
+d3$famsup_combined <- ifelse(d3$famsup.x == "yes" | d3$famsup.y == "yes", "yes", "no")
+
+```
+
+```{r}
+# Create a boxplot to visualize the distribution of total grades based on family support
+ggplot(d3, aes(x = famsup_combined, y = G3_total, fill = famsup_combined)) +
+  geom_boxplot() +
+  labs(title = "Family Support vs Grades",
+       x = "Family Support",
+       y = "Grades") +
+  scale_fill_manual(values = c("no" = "red", "yes" = "green")) +
+  theme_minimal()
+```
+
+```{r}
+# Load required library
+library(dplyr)
+
+# Fit a linear regression model to predict G3_total based on family support (famsup)
+model <- lm(G3_total ~ famsup_combined, data = d3)
+
+# Summarize the model to see the coefficients and statistical significance
+summary(model)
+
+```
+
+```{r}
+ggplot(d3, aes(x = famsup_combined, y = G3_total)) +
+  geom_jitter(aes(color = famsup_combined), width = 0.1, height = 0, alpha = 0.6) +  # Jittered points for individual data
+  geom_smooth(method = "lm", se = FALSE, color = "red") +  # Regression line
+  labs(title = "Family Support vs Total Final Grade (G3_total) with Linear Fit", 
+       x = "Family Support", y = "Total Final Grade (G3_total)") +
+  theme_minimal()
+
+```
+*Observation*
+The model indicates that there is no significant relationship between famsup_combined (family support) and G3_total (final grade). The p-value for famsup_combined "yes" is very high (0.907), and both the R-squared and F-statistic suggest that the model does not explain much of the variability in G3_total. Based on this, it is likely that family support does not have a substantial effect on the final grade in this dataset.
+
+
+*Interpretation of the estimated slope of the model.*
+The estimated slope of 0.08255 suggests that having family support ("yes") is associated with a slight increase of 0.08 in G3_total (final grade) compared to no family support. However, this effect is extremely small and not statistically significant (p-value = 0.907), meaning it is likely due to random chance and not a meaningful relationship.
+
+
+*Report on the R-squared value for the regression model. The implication of the value about the relationship between `family_income_score` and `G3_total`*
+
+The R-squared value of 3.623e-05 (approximately 0.0036%) indicates that family support (famsup_combined) explains almost none of the variability in students' grades (G3_total). This suggests a very weak and statistically insignificant relationship, implying that family support is not a meaningful predictor of final grades in this dataset. Other factors likely have a greater influence on student performance.
+
+
+*Investigate the constant variability of residuals with a relevant plot.*
+```{r}
+# Fit the model
+model <- lm(G3_total ~ famsup_combined, data = d3)
+
+# Plot residuals vs fitted values
+library(ggplot2)
+ggplot(data = data.frame(fitted = fitted(model), residuals = residuals(model)), 
+       aes(x = fitted, y = residuals)) +
+  geom_point(alpha = 0.6) +  # Scatter plot of residuals
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +  # Horizontal line at 0
+  labs(title = "Residuals vs Fitted Values",
+       x = "Fitted Values",
+       y = "Residuals") +
+  theme_minimal()
+
+```
+**Observation**
+The residuals vs. fitted values plot suggests that famsup (family support) is likely a binary variable, as the fitted values are clustered at two distinct points. However, the residuals show substantial variability within each cluster, indicating that famsup alone explains little of the variation in grades. The small difference between the two fitted value clusters suggests that the effect of famsup on grades is minimal. Additionally, the large spread of residuals may point to omitted variables or other factors influencing grades that are not included in the model. Overall, the plot indicates that while famsup might have some influence, its impact is weak, and the model requires further refinement to better capture the relationship.
+
+```{r}
+qqnorm(resid(model))
+qqline(resid(model), col = "red")
+```
+**Observation**
+The Normal Q-Q plot shows that the residuals from the model are mostly close to a straight line in the middle, meaning they follow a normal pattern there. However, at the ends (the tails), the points move away from the line, showing that there are some unusual or extreme values in the data. This means the model might not fully fit the data, and some of the assumptions about how the data behaves may not be entirely correct.
+
+**Conclusion**
+
+The linear regression analysis shows that family support (famsup_combined) has no meaningful impact on final grades (G3_total). The coefficient for family support is very small (0.08) and statistically insignificant (p-value = 0.907), indicating no real difference in grades between students with and without family support. The model has an R-squared of nearly zero (0.00003623), meaning it explains virtually none of the variability in grades, and the residuals show substantial unexplained variability. Overall, the results suggest that family support alone is not a significant predictor of grades, and other factors likely play a more important role.
+
+
+
+
